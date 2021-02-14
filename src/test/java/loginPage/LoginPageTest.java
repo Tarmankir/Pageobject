@@ -1,5 +1,6 @@
 package loginPage;
 
+import enums.Credentials;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -16,9 +17,7 @@ public class LoginPageTest {
 
         LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
 
-        loginPage.typeLogin("IVakidov");
-
-        loginPage.typePass("School593@");
+        loginPage.loginIn(Credentials.TEST1);
 
         loginPage.clickLogin();
     }

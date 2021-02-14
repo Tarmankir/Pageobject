@@ -1,5 +1,6 @@
 package pages;
 
+import enums.Credentials;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,6 +28,12 @@ public class LoginPage {
 
     public LoginPage typePass(String pass){
         Pass.sendKeys(pass);
+        return this;
+    }
+
+    public LoginPage loginIn (Credentials creds) {
+        typeLogin(creds.login);
+        typePass(creds.pass);
         return this;
     }
 
