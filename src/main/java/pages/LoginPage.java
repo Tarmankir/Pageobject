@@ -1,3 +1,5 @@
+package pages;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,13 +11,13 @@ public class LoginPage {
         this.driver = driver;
     }
 
-    @FindBy(css = "input[aria-label='E-mail или мобильный телефон']")
+    @FindBy(css = "#username")
     private WebElement Login;
 
-    @FindBy(css = "input[aria-label='Пароль']")
+    @FindBy(css = "#password")
     private WebElement Pass;
 
-    @FindBy(css = "button[aria-label='Войти']")
+    @FindBy(css = ".button1")
     private WebElement Button;
 
     public LoginPage typeLogin(String login){

@@ -1,18 +1,24 @@
+package loginPage;
+
+import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
+import pages.LoginPage;
 
-public class MainClass {
-    public static void main(String[] args) {
+public class LoginPageTest {
+
+    @Test
+    public void loginPageTest() {
         System.setProperty("webdriver.gecko.driver", "/home/knosov/IdeaProjects/N1/drivers/geckodriver");
         WebDriver driver = new FirefoxDriver();
-        driver.get("https://www.rabota.ru/passport/sign-in/");
+        driver.get("https://forum.awd.ru/ucp.php?mode=login&redirect=.%2Findex.php");
 
         LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
 
-        loginPage.typeLogin("artol@bk.ru");
+        loginPage.typeLogin("IVakidov");
 
-        loginPage.typePass("test");
+        loginPage.typePass("School593@");
 
         loginPage.clickLogin();
     }
