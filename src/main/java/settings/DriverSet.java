@@ -1,12 +1,12 @@
 package settings;
 
-import io.github.bonigarcia.wdm.managers.ChromeDriverManager;
-import org.testng.annotations.BeforeMethod;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.testng.annotations.BeforeClass;
 
 public abstract class DriverSet {
 
-    @BeforeMethod
-    public void driverSet() {
-        ChromeDriverManager.firefoxdriver().setup();
-   }
+    @BeforeClass
+    public void beforeClass() {
+        WebDriverManager.firefoxdriver().setup();
+    }
 }
