@@ -10,14 +10,19 @@ import org.testng.annotations.Test;
 import settings.DriverSet;
 import pages.LoginPage;
 
+import static org.openqa.selenium.support.PageFactory.initElements;
+
 public class LoginPageTest extends DriverSet {
 
     private WebDriver driver;
+    private LoginPage loginPage;
 
     @BeforeMethod
     void beforeMethod() {
         driver = new FirefoxDriver();
         driver.get("https://forum.awd.ru/ucp.php?mode=login&redirect=.%2Findex.php");
+
+        loginPage = initElements(driver, LoginPage.class);
     }
 
     @AfterMethod
@@ -27,13 +32,8 @@ public class LoginPageTest extends DriverSet {
 
     @Test
     public void loginPageTest() {
-
-        LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
-
         loginPage.loginIn(Credentials.TEST1);
-
         loginPage.clickLogin();
-
         loginPage.checkButtonExit("Выход [ IVakidov ]");
     }
 }
