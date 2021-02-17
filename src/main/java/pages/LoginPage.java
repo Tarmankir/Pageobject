@@ -4,8 +4,10 @@ import enums.Credentials;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
 public class LoginPage {
+
     private WebDriver driver;
 
     public LoginPage(WebDriver driver) {
@@ -13,32 +15,36 @@ public class LoginPage {
     }
 
     @FindBy(css = "#username")
-    private WebElement Login;
+    private WebElement loginen;
 
     @FindBy(css = "#password")
-    private WebElement Pass;
+    private WebElement passen;
 
     @FindBy(css = ".button1")
-    private WebElement Button;
+    private WebElement button;
 
-    public LoginPage typeLogin(String login){
-        Login.sendKeys(login);
-        return this;
-    }
-
-    public LoginPage typePass(String pass){
-        Pass.sendKeys(pass);
-        return this;
-    }
-
-    public LoginPage loginIn (Credentials creds) {
+    public void loginIn(Credentials creds) {
         typeLogin(creds.login);
         typePass(creds.pass);
-        return this;
+    }
+
+    public void typeLogin(String login) {
+        loginen.sendKeys(login);
+    }
+
+    public void typePass(String pass) {
+        passen.sendKeys(pass);
     }
 
     public void clickLogin(){
-        Button.click();
+        button.click();
+    }
+
+    @FindBy(css = "a[title='Выход [ IVakidov ]']")
+    private WebElement buttonExit;
+
+    public void checkButtonExit(String text) {
+        Assert.assertEquals(buttonExit.getText(), text);
     }
 
 }
